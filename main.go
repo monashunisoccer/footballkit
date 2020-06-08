@@ -13,27 +13,27 @@ import (
 // Given a string description of a football kit, render a rendered image of that kit
 func RenderImage(stripDescription string) *image.Image {
 
-	var bodyAsset, leftArmAsset, rightArmAsset, shortsAsset, socksAsset = decode_footballkit(stripDescription)
+	var bodyAsset, leftArmAsset, rightArmAsset, shortsAsset, socksAsset = decodeFootballKit(stripDescription)
 
 	/*
-	This is not at all clever - we chose a fixed size (based on the wikipedia football kit images) and
-	have hardcoded all our shapes to that.
+		This is not at all clever - we chose a fixed size (based on the wikipedia football kit images) and
+		have hardcoded all our shapes to that.
 
-	   100x135 is our image sizes
+		   100x135 is our image sizes
 
-	   left arm 0,0.. 31x59
-	   body     31,0 .. 38x59
-	   right arm 69,0 .. 31x59
-	   shorts    0,59 .. 100x36
-	   socks    0,95 .. 100x40
+		   left arm 0,0.. 31x59
+		   body     31,0 .. 38x59
+		   right arm 69,0 .. 31x59
+		   shorts    0,59 .. 100x36
+		   socks    0,95 .. 100x40
 	*/
 	m := image.NewNRGBA(image.Rect(0, 0, 100, 135))
 
-	imagePaste(bodyAsset.filename, m, 31, 0, bodyAsset.coloura, bodyAsset.colourb)
-	imagePaste(leftArmAsset.filename, m, 0, 0, leftArmAsset.coloura, leftArmAsset.colourb)
-	imagePaste(rightArmAsset.filename, m, 69, 0, rightArmAsset.coloura, rightArmAsset.colourb)
-	imagePaste(shortsAsset.filename, m, 0, 59, shortsAsset.coloura, shortsAsset.colourb)
-	imagePaste(socksAsset.filename, m, 0, 95, socksAsset.coloura, socksAsset.colourb)
+	imagePaste(bodyAsset.filename, m, 31, 0, bodyAsset.colourOne, bodyAsset.colourTwo)
+	imagePaste(leftArmAsset.filename, m, 0, 0, leftArmAsset.colourOne, leftArmAsset.colourTwo)
+	imagePaste(rightArmAsset.filename, m, 69, 0, rightArmAsset.colourOne, rightArmAsset.colourTwo)
+	imagePaste(shortsAsset.filename, m, 0, 59, shortsAsset.colourOne, shortsAsset.colourTwo)
+	imagePaste(socksAsset.filename, m, 0, 95, socksAsset.colourOne, socksAsset.colourTwo)
 
 	var img image.Image = m
 
@@ -72,11 +72,11 @@ func imagePaste(assetName string, destImage *image.NRGBA, destX int, destY int, 
 			pngColour := destImage.ColorModel().Convert(pngImg.At(x, y)).(color.NRGBA)
 
 			if pngColour.A > 200 && pngColour.R == 255 && pngColour.G == 0 && pngColour.B == 0 {
-				destImage.SetNRGBA(x + destX, y + destY, colorA)
-			} else if pngColour.A > 200 && pngColour.R == 0 && pngColour.G == 255 && pngColour.B == 0  {
-				destImage.SetNRGBA(x + destX, y + destY, colorB)
+				destImage.SetNRGBA(x+destX, y+destY, colorA)
+			} else if pngColour.A > 200 && pngColour.R == 0 && pngColour.G == 255 && pngColour.B == 0 {
+				destImage.SetNRGBA(x+destX, y+destY, colorB)
 			} else {
-				destImage.SetNRGBA(x + destX, y + destY, pngColour)
+				destImage.SetNRGBA(x+destX, y+destY, pngColour)
 			}
 		}
 	}
