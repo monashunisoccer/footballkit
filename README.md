@@ -35,7 +35,7 @@ here of our nearest approximation.
 
 ### Peru
 
-`RenderImage("leftsash red white shorts white socks white")`
+`RenderImage("leftsash white red shorts white socks red")`
 
 ![kit](example-output/peru.png)
 
@@ -44,3 +44,18 @@ here of our nearest approximation.
 `RenderImage("checks red white shorts white socks blue")`
 
 ![kit](example-output/croatia.png)
+
+
+## Build
+
+Install the go-bindata utility
+
+```shell
+go install github.com/go-bindata/go-bindata/...
+```
+
+then if *any* of the images (in `data/`) have been modified, regenerate the static image data file.
+
+```shell
+~/go/bin/go-bindata -pkg footballkit data/
+```

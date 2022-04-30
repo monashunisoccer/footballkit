@@ -37,7 +37,7 @@ func TestAndWriteExamples(t *testing.T) {
 
 	WriteOut(RenderImage("hoops green white shorts white socks green"), "example-output/celtic.png")
 
-	WriteOut(RenderImage("rightsash red white shorts white socks white"), "example-output/peru.png")
+	WriteOut(RenderImage("rightsash white red shorts white socks red"), "example-output/peru.png")
 
 	WriteOut(RenderImage("checks red white shorts white socks blue"), "example-output/croatia.png")
 }

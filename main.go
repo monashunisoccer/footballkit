@@ -6,11 +6,9 @@ import (
 	"image/color"
 	"image/png"
 	"log"
-
-	_ "github.com/go-bindata/go-bindata"
 )
 
-// Given a string description of a football kit, render a rendered image of that kit
+// RenderImage Given a string description of a football kit, render a rendered image of that kit
 func RenderImage(stripDescription string) *image.Image {
 
 	var bodyAsset, leftArmAsset, rightArmAsset, shortsAsset, socksAsset = decodeFootballKit(stripDescription)
@@ -21,11 +19,11 @@ func RenderImage(stripDescription string) *image.Image {
 
 		   100x135 is our image sizes
 
-		   left arm 0,0.. 31x59
-		   body     31,0 .. 38x59
-		   right arm 69,0 .. 31x59
-		   shorts    0,59 .. 100x36
-		   socks    0,95 .. 100x40
+		   left arm 0,0 ... 31x59
+		   body     31,0 ... 38x59
+		   right arm 69,0 ... 31x59
+		   shorts    0,59 ... 100x36
+		   socks    0,95 ... 100x40
 	*/
 	m := image.NewNRGBA(image.Rect(0, 0, 100, 135))
 
@@ -40,7 +38,7 @@ func RenderImage(stripDescription string) *image.Image {
 	return &img
 }
 
-// Takes a name of an filename image file and replaces all the strong red/green pixels with the alternate
+// Takes a name of a filename image file and replaces all the strong red/green pixels with the alternate
 // specified colours, and pastes into a destination image object at 'destX' and 'destY'
 func imagePaste(assetName string, destImage *image.NRGBA, destX int, destY int, colorA color.NRGBA, colorB color.NRGBA) {
 
