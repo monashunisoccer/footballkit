@@ -1,4 +1,4 @@
-// Code generated for package main by go-bindata DO NOT EDIT. (@generated)
+// Code generated for package footballkit by go-bindata DO NOT EDIT. (@generated)
 // sources:
 // data/body_cross.png
 // data/body_half.png

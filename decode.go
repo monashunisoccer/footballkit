@@ -24,20 +24,20 @@ func decodeFootballKit(description string) (assetWithColours, assetWithColours, 
 
 	stripSplit := strings.Split(description, " ")
 
-	bodyAsset := assetWithColours{ filename: "body_plain.png" }
+	bodyAsset := assetWithColours{filename: "body_plain.png"}
 	bodyAsset.colourOne, _ = colorDecode("white")
 	bodyAsset.colourTwo, _ = colorDecode("white")
 
-	shortsAsset := assetWithColours{ filename: "shorts_plain.png" }
+	shortsAsset := assetWithColours{filename: "shorts_plain.png"}
 	shortsAsset.colourOne, _ = colorDecode("white")
 	shortsAsset.colourTwo, _ = colorDecode("white")
 
-	socksAsset := assetWithColours{ filename: "socks_plain.png" }
+	socksAsset := assetWithColours{filename: "socks_plain.png"}
 	socksAsset.colourOne, _ = colorDecode("white")
 	socksAsset.colourTwo, _ = colorDecode("white")
 
-	leftArmAsset := assetWithColours{ filename: "leftarm_plain.png" }
-	rightArmAsset := assetWithColours{ filename: "rightarm_plain.png"}
+	leftArmAsset := assetWithColours{filename: "leftarm_plain.png"}
+	rightArmAsset := assetWithColours{filename: "rightarm_plain.png"}
 
 stillProcessing:
 	// we try to pair words together if they make colourOne valid colour combo
@@ -148,11 +148,11 @@ stillProcessing:
 				bodyAsset.filename = "body_leftsash.png"
 			}
 			// already the default but allow it to be explicitly specified too
-			if strings.EqualFold(word, "plain" ) || strings.EqualFold(word, "solid") {
+			if strings.EqualFold(word, "plain") || strings.EqualFold(word, "solid") {
 				bodyAsset.filename = "body_plain.png"
 			}
 			if strings.EqualFold(word, "quarter") || strings.EqualFold(word, "quarters") || strings.EqualFold(word, "quads") {
-				bodyAsset.filename = "body_hoops.png"
+				bodyAsset.filename = "body_quarters.png"
 			}
 			if strings.EqualFold(word, "rightsash") {
 				bodyAsset.filename = "body_rightsash.png"
@@ -174,4 +174,3 @@ stillProcessing:
 
 	return bodyAsset, leftArmAsset, rightArmAsset, shortsAsset, socksAsset
 }
-
